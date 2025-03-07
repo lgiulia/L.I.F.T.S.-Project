@@ -1,5 +1,1 @@
-# hello-world
-## ciao
-### hola
-hallo
-rytsas
+# L.I.F.T.S. Project
