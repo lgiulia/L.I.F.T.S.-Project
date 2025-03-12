@@ -1,0 +1,19 @@
+{
+  "Coordinates": {
+    "x": 20.59,
+    "y": 36.78
+  },
+  "BatteryLevel": 97.78,
+  "ON_OFF": "ON",
+  "MissionCoordinates": {
+    "x": 45.67,
+    "y": 20.80,
+    "shelf": "A5",
+    "height": 1
+  },
+  "MissionStatus": {
+    "mission_id": "12345",
+    "status": "completed"
+  },
+  "timestamp": 1234567890
+}
