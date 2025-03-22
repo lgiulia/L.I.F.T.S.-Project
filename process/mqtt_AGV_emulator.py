@@ -31,7 +31,7 @@ def publish_device_info():
     mqtt_client.publish(target_topic, device_payload_string, 0, True) # True: conserverà il messaggio
     print(f"Device Info Published: Topic: {target_topic} Payload: {device_payload_string}")
 
-device_id = "AGV-vehicle-{0}".format(MqttConfigurationParameters.MQTT_USERNAME) # mettere un id univoco per ogni agv?
+device_id = "AGV-device-{0}".format(MqttConfigurationParameters.MQTT_USERNAME) # mettere un id univoco per ogni agv?
 message_limit = 1000
 
 mqtt_client = mqtt.Client(device_id)
