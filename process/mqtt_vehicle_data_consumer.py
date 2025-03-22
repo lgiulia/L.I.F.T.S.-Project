@@ -31,7 +31,7 @@ message_limit = 1000
 mqtt_client = mqtt.Client(device_id)
 mqtt_client.on_message = on_message
 mqtt_client.on_connect = on_connect
-mqtt_client.username_pw_set(MqttConfigurationParameters.MQTTUSERNAME, MqttConfigurationParameters.MQTT_PASSWORD)
+mqtt_client.username_pw_set(MqttConfigurationParameters.MQTT_USERNAME, MqttConfigurationParameters.MQTT_PASSWORD)
 
 mqtt_client.connect(MqttConfigurationParameters.BROKER_ADDRESS, MqttConfigurationParameters.BROKER_PORT)
 mqtt_client.loop_forever()
