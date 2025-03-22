@@ -1,4 +1,5 @@
 # Giulia: USERNAME: 308955@studenti.unimore.it, PASSWORD: lhneynnevujikxrc
+# Elia:  USERNAME = "305609@studenti.unimore.it" PASSWORD = "osklduvrzblhnjdd"
 class MqttConfigurationParameters(object):
     BROKER_ADDRESS =  "155.185.4.4"
     BROKER_PORT = 7883
