@@ -5,8 +5,8 @@ class MqttConfigurationParameters(object):
     MQTT_USERNAME = "305609@studenti.unimore.it"
     MQTT_PASSWORD = "osklduvrzblhnjdd"
     MQTT_BASIC_TOPIC = "/iot/user/{0}".format(MQTT_USERNAME)
-#    VEHICLE_TOPIC = "vehicle"
-#    VEHICLE_TELEMETRY_TOPIC = "telemetry"
-#    VEHICLE_INFO_TOPIC = "info"
+    DEVICE_TOPIC = "device"
+    DEVICE_TELEMETRY_TOPIC = "telemetry"
+    DEVICE_INFO_TOPIC = "info"
 
-#dobbiamo capire cosa metterci dentro strada facendo
+#dobbiamo capire cosa metterci dentro strada facendo -> Risolto?
