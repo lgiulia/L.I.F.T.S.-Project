@@ -24,7 +24,8 @@ class AGVTelemetryData:
             self.ON_OFF = "OFF" #la batteria è esaurita e l'agv si spegne
 
         # self.ON_OFF = bisognerebbe creare una funzione che controlla lo stato dell'agv e dice all'agv se essere acceso/spento/arrestato x motivi di sicurezza
-        if random.random() < 0.2:  # il 20% di probabilità di arresto diemergenza
+        # per ora lasciamo così, se c'è tempo proviamo ad implementarlo con switch case
+        if random.random() < 0.2:  # il 20% di probabilità di arresto di emergenza
             self.ON_OFF = "EMERGENCY_STOP"
         elif self.ON_OFF == "EMERGENCY_STOP":  # se era in arresto di emergenza prova a riavviare con probabilità 50%
             if random.random() < 0.5:
