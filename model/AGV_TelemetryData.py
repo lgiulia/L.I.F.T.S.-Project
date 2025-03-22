@@ -23,6 +23,19 @@ class AGVTelemetryData:
         else:
             self.ON_OFF = "OFF" #la batteria è esaurita e l'agv si spegne
 
-        # self.ON_OFF = # bisognerebbe creare una funzione che controlla lo stato dell'agv e dice all'agv se essere acceso/spento/arrestato x motivi di sicurezza
+        # self.ON_OFF = bisognerebbe creare una funzione che controlla lo stato dell'agv e dice all'agv se essere acceso/spento/arrestato x motivi di sicurezza
+        if random.random() < 0.2:  # il 20% di probabilità di arresto diemergenza
+            self.ON_OFF = "EMERGENCY_STOP"
+        elif self.ON_OFF == "EMERGENCY_STOP":  # se era in arresto di emergenza prova a riavviare con probabilità 50%
+            if random.random() < 0.5:
+                self.ON_OFF = "ON"
+            else:
+                self.ON_OFF = "OFF"
+        else:
+            if random.random() < 0.5:  # se non è in emergenza, cambia ON_OFF casualmente
+                self.ON_OFF = "ON"
+            else:
+                self.ON_OFF = "OFF"
+
         self.MissionCoordinates = Coordinates(random_x, random_y)
         self.timestamp = int(time.time())
