@@ -16,7 +16,7 @@ def publish_telemetry_data():
         MqttConfigurationParameters.DEVICE_TELEMETRY_TOPIC
     )
     device_payload_string = AGVTelemetryData.to_json()
-    mqtt_client.publish(target_topic, device_payload_string, 0, False) # mqtt_client.publish(target_topic, device_payload_string, QoS (0), il broker non conserva il messaggio (False))
+    mqtt_client.publish(target_topic, device_payload_string, 1, True) # mqtt_client.publish(target_topic, device_payload_string, QoS (1), il broker conserva il messaggio (False))
     print(f"Telemetry data Published: Topic: {target_topic} Payload: {device_payload_string}")
 
 def publish_device_info():
@@ -28,7 +28,7 @@ def publish_device_info():
         MqttConfigurationParameters.DEVICE_INFO_TOPIC
     )
     device_payload_string = AGVDescriptor.to_json()
-    mqtt_client.publish(target_topic, device_payload_string, 0, True) # True: conserverà il messaggio
+    mqtt_client.publish(target_topic, device_payload_string, 0, False) # False: non conserverà il messaggio
     print(f"Device Info Published: Topic: {target_topic} Payload: {device_payload_string}")
 
 device_id = "AGV-device-{0}".format(MqttConfigurationParameters.MQTT_USERNAME) # mettere un id univoco per ogni agv?
