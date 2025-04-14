@@ -4,6 +4,8 @@ from json import JSONDecodeError
 from flask import request, Response
 from flask_restful import Resource
 
+from model.AGV_descriptor import AGVDescriptor
+
 class AGVResource(Resource):
 
     def __init__(self, **kwargs):
