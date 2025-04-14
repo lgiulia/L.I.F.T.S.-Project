@@ -4,20 +4,20 @@ from model.AGV_descriptor import AGVDescriptor
 
 class DataManager:
 
-    device_dictionary = {}
+    AGV_dictionary = {}
 
-    def add_device(self, newDevice):
-        if isinstance(newDevice, AGVDescriptor):   # verifica se newDevice è un'istanza della classe AGVDescriptor
-            self.device_dictionary[newDevice.id] = newDevice
+    def add_agv(self, newagv):
+        if isinstance(newagv, AGVDescriptor):   # verifica se newDevice è un'istanza della classe AGVDescriptor
+            self.AGV_dictionary[newagv.id] = newagv
         else:
-            raise TypeError("Error adding new device! Only AVGDescriptor are allowerd!")
+            raise TypeError("Error adding new AGV! Only AVGDescriptor are allowed!")
 
-    def update_device(self, updatedDevice):
-        if isinstance(updatedDevice, AGVDescriptor):
-            self.device_dictionary[updatedDevice.id] = updatedDevice
+    def update_agv(self, updatedagv):
+        if isinstance(updatedagv, AGVDescriptor):
+            self.AGV_dictionary[updatedagv.id] = updatedagv
         else:
-            raise TypeError("Error updating the device! Only AVGDescriptor are allowed!")
+            raise TypeError("Error updating the AGV! Only AVGDescriptor are allowed!")
 
-    def remove_device(self, deviceID):
-        if deviceID in self.device_dictionary.keys():
-            del self.device_dictionary[deviceID]
+    def remove_agv(self, agvID):
+        if agvID in self.AGV_dictionary.keys():
+            del self.AGV_dictionary[agvID]
