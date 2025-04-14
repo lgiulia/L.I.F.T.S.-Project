@@ -15,3 +15,17 @@ class AGVsResource(Resource):
         for agv in self.dataManager.AGV_dictionary.values():
             agv_list.append(agv.__dict__)
         return agv_list, 200   # 200: codice HTTP OK
+
+    def post(self):
+        try:
+            json_data = request.get_json(force=True)
+            AgvDescriptor = AGVDescriptor(**json_data)
+            if AgvDescriptor.id in self.dataManager.AGV_dictionary:
+                return {'error': "AGV ID already exists"}, 409
+            else:
+                self.dataManager.add_agv(AgvDescriptor)
+                return Response(status=201, headers={"Location": request.url+"/"+AgvDescriptor.id})
+        except JSONDecodeError:
+            return {'error': "Invalid JSON! Check the request"}, 400
+        except Exception as e:
+            return {'error': "Generic Internal Server Error! Reason: " + str(e)}, 500
