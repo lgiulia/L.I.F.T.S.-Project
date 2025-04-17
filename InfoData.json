@@ -1,5 +1,6 @@
 {
   "id": "agv-0001",
   "manufacturer": "KUKA",
-  "model":"alpha.01"
+  "model":"alpha.01",
+  "software_ver": "4.6.21"
 }

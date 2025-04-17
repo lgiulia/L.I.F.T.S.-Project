@@ -29,7 +29,8 @@ class AGVResource(Resource):
             updated_agv = AGVDescriptor(
                 id=agv_id,  # L'ID viene preso dall'URL
                 manufacturer=data.get('manufacturer', existing_agv.manufacturer),
-                model=data.get('model', existing_agv.model)
+                model=data.get('model', existing_agv.model),
+                software_ver=data.get('software_ver', existing_agv.software_ver)
             )
 
             # Aggiorna l'AGV nel DataManager
@@ -39,5 +40,16 @@ class AGVResource(Resource):
 
         except JSONDecodeError:
             return {'error': "Invalid JSON! Check the request"}, 400
+        except Exception as e:
+            return {'error': f"Internal Server Error: {str(e)}"}, 500
+
+    def delete(self, agv_id):
+        if agv_id not in self.dataManager.AGV_dictionary:
+            return {'error': f"AGV with id '{agv_id}' Not Found"}, 404
+
+        try:
+            self.dataManager.remove_agv(agv_id)
+            return '', 204  # agv con id "agv-n" rimosso con successo, nessun body
+
         except Exception as e:
             return {'error': f"Internal Server Error: {str(e)}"}, 500

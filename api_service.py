@@ -16,7 +16,7 @@ print("Starting HTTP RESTful API Server ...")
 
 dataManager = DataManager()  # per gestire la memorizzazione dei dati
 
-demoAGV = AGVDescriptor("agv-0001", "KUKA", "alpha.01")
+demoAGV = AGVDescriptor("agv-0001", "KUKA", "alpha.01", "4.6.21")
 
 dataManager.add_agv(demoAGV)
 

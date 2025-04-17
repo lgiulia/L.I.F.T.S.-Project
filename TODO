@@ -1,6 +1,4 @@
 - mettere senml da qualche parte
-- fare http
 - mettere a posto le robe nell'mqtt
 - in api_service trovare modo per fare demoAGV prendendo i dati da InfoData.json?
-- aggiungere delete in http
 - modificare http in modo che prenda i dati che rileva mqtt
