@@ -40,7 +40,7 @@ mqtt_client.username_pw_set(MqttConfigurationParameters.MQTT_USERNAME, MqttConfi
 mqtt_client.connect(MqttConfigurationParameters.BROKER_ADDRESS, MqttConfigurationParameters.BROKER_PORT)
 mqtt_client.loop_start()
 
-AGVDescriptor = AGVDescriptor(device_id, "KUKA", "alpha.01") # il prof mette anche username perchè ha guidatore ma a noi non serve?
+AGVDescriptor = AGVDescriptor(device_id, "KUKA", "alpha.01", "4.6.21") # il prof mette anche username perchè ha guidatore ma a noi non serve?
 AGVTelemetryData = AGVTelemetryData()
 
 publish_device_info()

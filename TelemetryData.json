@@ -1,5 +1,5 @@
 {
-  "Coordinates": {
+  "Position": {
     "x": 20.59,
     "y": 36.78
   },
@@ -12,7 +12,7 @@
     "height": 1
   },
   "MissionStatus": {
-    "mission_id": "12345",
+    "mission_id": 12345,
     "status": "completed"
   },
   "timestamp": 1234567890
