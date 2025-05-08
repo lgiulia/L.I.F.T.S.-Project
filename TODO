@@ -1,4 +1,6 @@
 - mettere senml da qualche parte
 - mettere a posto le robe nell'mqtt
-- in api_service trovare modo per fare demoAGV prendendo i dati da InfoData.json?
+- in api_service trovare modo per fare demoAGV prendendo i dati da InfoData.json? fatto.
+- in mqtt_AGV_emulator, trovare il modo per supportare la lista di dizionari di agv.
+
 - modificare http in modo che prenda i dati che rileva mqtt
