@@ -6,6 +6,7 @@ from resources.AGVs_resource import AGVsResource
 from persistence.data_manager import DataManager
 from model.AGV_descriptor import AGVDescriptor
 from resources.AGV_resource import AGVResource
+import json
 
 app = Flask(__name__)  # crea server flask
 api = Api(app)  # crea API tramite FlaskRestFul
@@ -16,9 +17,21 @@ print("Starting HTTP RESTful API Server ...")
 
 dataManager = DataManager()  # per gestire la memorizzazione dei dati
 
-demoAGV = AGVDescriptor("agv-0001", "KUKA", "alpha.01", "4.6.21")
+with open('InfoData.json','r') as file:
+    AGVdata = json.load(file)
 
-dataManager.add_agv(demoAGV)
+for agv in AGVdata:
+    demoAGV = AGVDescriptor(agv["id"], agv["manufacturer"], agv["model"], agv["software_ver"])
+    dataManager.add_agv(demoAGV)
+
+
+
+
+
+#demoAGV = AGVDescriptor("agv-0001", "KUKA", "alpha.01", "4.6.21")
+#
+#dataManager.add_agv(demoAGV)
+#codice originale, prende solo dei dati preimpostati, senza leggere InfoData.json
 
 api.add_resource(AGVsResource, ENDPOINT_PREFIX + '/AGV',    # aggiunge lista di agvs
                  resource_class_kwargs={'data_manager': dataManager},

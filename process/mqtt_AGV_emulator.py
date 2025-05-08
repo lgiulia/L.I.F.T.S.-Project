@@ -3,6 +3,7 @@ import time
 from model.AGV_descriptor import AGVDescriptor
 from model.AGV_TelemetryData import AGVTelemetryData
 from config.mqtt_conf_params import MqttConfigurationParameters
+import json
 
 def on_connect(client, userdata, flags, rc): # quando il client MQTT stabilisce una connessione con il broker
     print("Connected with result code " + str(rc))
@@ -32,7 +33,7 @@ def publish_device_info():
     print(f"Device Info Published: Topic: {target_topic} Payload: {device_payload_string}")
 
 device_id = "AGV-device-{0}".format(MqttConfigurationParameters.MQTT_USERNAME) # mettere un id univoco per ogni agv?
-message_limit = 1000
+message_limit = 3000
 
 mqtt_client = mqtt.Client(device_id)
 mqtt_client.on_connect = on_connect
@@ -40,15 +41,19 @@ mqtt_client.username_pw_set(MqttConfigurationParameters.MQTT_USERNAME, MqttConfi
 mqtt_client.connect(MqttConfigurationParameters.BROKER_ADDRESS, MqttConfigurationParameters.BROKER_PORT)
 mqtt_client.loop_start()
 
-AGVDescriptor = AGVDescriptor(device_id, "KUKA", "alpha.01", "4.6.21") # il prof mette anche username perchè ha guidatore ma a noi non serve?
+AGVDescriptor = AGVDescriptor(device_id, "KUKA", "alpha.02", "4.6.21") # il prof mette anche username perchè ha guidatore ma a noi non serve?, si... non serve
 AGVTelemetryData = AGVTelemetryData()
+
+with open('../InfoData.json','r') as file:
+    AGVdata = json.load(file)
 
 publish_device_info()
 
 # Invio dopo 3 secondi dei nuovi dati di telemetria
 for message_id in range(message_limit):
-    AGVTelemetryData.update_measurements()
-    publish_telemetry_data()
-    time.sleep(3)
+    for agv in AGVdata:
+        AGVTelemetryData.update_measurements()
+        publish_telemetry_data()
+        time.sleep(3)
 
 mqtt_client.loop_stop()

@@ -1,5 +1,6 @@
 import paho.mqtt.client as mqtt
 from config.mqtt_conf_params import MqttConfigurationParameters
+from persistence.data_manager import DataManager  #sarebbe di http, vediamo se funzione
 
 def on_connect(client, userdata, flags, rc):
     # device_info_topic: /iot/user/<user_id>/device/+/info
