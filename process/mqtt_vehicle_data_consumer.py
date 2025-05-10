@@ -32,7 +32,7 @@ def on_message(client, userdata, message):
         senml_data = json.loads(message.payload.decode('utf-8'))
         print("Parsed SenML data:", senml_data)
 
-        # Estrai l'ID del dispositivo dal topic MQTT
+        # Estrae l'ID del dispositivo dal topic MQTT
         topic_parts = message.topic.split('/')
         device_id_index = topic_parts.index(MQTT_DEVICE_TOPIC_SEGMENT) + 1
         if device_id_index < len(topic_parts) and topic_parts[device_id_index]:
