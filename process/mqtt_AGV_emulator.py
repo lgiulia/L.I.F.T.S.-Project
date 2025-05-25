@@ -62,12 +62,27 @@ mqtt_client.loop_start()
 with open('../InfoData.json','r') as file:
     AGVdata = json.load(file)
 
+
+
 for agv in AGVdata:
     publish_device_info(agv)
-    AGVTelemetryData = AGVTelemetryData()
-    for message_id in range(message_limit):
+
+AGVTelemetryData = AGVTelemetryData()
+
+for message_id in range(message_limit):
+    for agv in AGVdata:
         AGVTelemetryData.update_measurements()
         publish_telemetry_data(agv, AGVTelemetryData)
-        time.sleep(3)
+        time.sleep(5)
+
+
+#for agv in AGVdata:
+#    publish_device_info(agv)
+#    AGVTelemetryData = AGVTelemetryData()
+#    for message_id in range(message_limit):
+#        AGVTelemetryData.update_measurements()
+#        publish_telemetry_data(agv, AGVTelemetryData)
+#        time.sleep(3)
+
 
 mqtt_client.loop_stop()

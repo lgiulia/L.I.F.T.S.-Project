@@ -1,6 +1,4 @@
-- mettere senml da qualche parte
-- mettere a posto le robe nell'mqtt
-- in api_service trovare modo per fare demoAGV prendendo i dati da InfoData.json? fatto.
-- in mqtt_AGV_emulator, trovare il modo per supportare la lista di dizionari di agv.
+- creare la classe httpconfigurationparameters nella cartella config ( in mqtt_vehicle data consumer alla righa 6 e 7 c'è roba da far sparire)
+- trovare un modo di cambiare le mission coordinates degli agv in modo che siano diverse (al momento, tutti gli altri parametri vengono generati diversamente tranne le mission coordinates per qualche ragione)
 
-- modificare http in modo che prenda i dati che rileva mqtt
+

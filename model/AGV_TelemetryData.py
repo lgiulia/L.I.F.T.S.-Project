@@ -2,9 +2,7 @@ import json
 from model.Coordinates import Coordinates
 import time
 import random
-#
-######### implementare "mission status" e "coordinates", questi parametri esistono già in TelemetryData.json
-#
+
 class AGVTelemetryData:
 
     def __init__(self):
@@ -43,7 +41,13 @@ class AGVTelemetryData:
 
        # self.MissionCoordinates = Coordinates(0 + random.uniform(0, 14), 0 + random.uniform(0, 16))
 
-        #algoritmo spostamento agv funzionahh :-)
+        #algoritmo spostamento agv
+        random_x = 0 + int(random.uniform(0, 14))
+        random_y = 0 + int(random.uniform(0, 16))
+
+        if self.MissionStatus == "completed":
+            self.MissionCoordinates = Coordinates(random_x, random_y)
+
         if self.ON_OFF == "ON":
             if self.MissionCoordinates.x != self.Position.x or self.MissionCoordinates.y != self.Position.y :
 
@@ -69,7 +73,7 @@ class AGVTelemetryData:
 
             elif self.MissionCoordinates.x == self.Position.x and self.MissionCoordinates.y == self.Position.y :
                 self.MissionStatus = "completed"
-                self.MissionCoordinates = Coordinates(0 + int(random.uniform(0, 14)), 0 + int(random.uniform(0, 16)))
+                #self.MissionCoordinates = Coordinates(0 + int(random.uniform(0, 14)), 0 + int(random.uniform(0, 16)))
         else:
             self.MissionStatus = "paused"
 
