@@ -42,8 +42,11 @@ class AGVTelemetryData:
        # self.MissionCoordinates = Coordinates(0 + random.uniform(0, 14), 0 + random.uniform(0, 16))
 
         #algoritmo spostamento agv
-        random_x = 0 + int(random.uniform(0, 14))
-        random_y = 0 + int(random.uniform(0, 16))
+        random_x = random.randint(0, 14)
+        random_y = random.randint(0, 16)
+        print(self.MissionStatus)
+
+
 
         if self.MissionStatus == "completed":
             self.MissionCoordinates = Coordinates(random_x, random_y)
