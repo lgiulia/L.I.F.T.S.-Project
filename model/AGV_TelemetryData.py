@@ -44,6 +44,10 @@ class AGVTelemetryData:
         #algoritmo spostamento agv
         random_x = random.randint(0, 14)
         random_y = random.randint(0, 16)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3efbb77024a1ec76d10dbfe66d4d34ea38187b9d
 
 
 
