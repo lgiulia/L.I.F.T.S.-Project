@@ -44,7 +44,6 @@ class AGVTelemetryData:
         #algoritmo spostamento agv
         random_x = random.randint(0, 14)
         random_y = random.randint(0, 16)
-        print(self.MissionStatus)
 
 
 
