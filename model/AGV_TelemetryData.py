@@ -11,7 +11,7 @@ class AGVTelemetryData:
         self.MissionCoordinates = Coordinates(4, 1)
         self.timestamp = int(time.time())
         self.Position = Coordinates(0, 0)
-        self.MissionStatus = ""  #completed/ongoing/aborted/paused
+        self.MissionStatus = ""
 
     def to_json(self):
         return json.dumps(self, default=lambda o: o.__dict__)
@@ -44,10 +44,6 @@ class AGVTelemetryData:
         #algoritmo spostamento agv
         random_x = random.randint(0, 14)
         random_y = random.randint(0, 16)
-<<<<<<< HEAD
-=======
-
->>>>>>> 3efbb77024a1ec76d10dbfe66d4d34ea38187b9d
 
 
 

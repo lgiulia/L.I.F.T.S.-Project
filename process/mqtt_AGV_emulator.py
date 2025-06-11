@@ -67,13 +67,24 @@ with open('../InfoData.json','r') as file:
 for agv in AGVdata:
     publish_device_info(agv)
 
-AGVTelemetryData = AGVTelemetryData()
+#AGVTelemetryData = AGVTelemetryData()
+
+for agv_info in AGVdata:
+    agv_info['telemetry_data'] = AGVTelemetryData()
 
 for message_id in range(message_limit):
-    for agv in AGVdata:
-        AGVTelemetryData.update_measurements()
-        publish_telemetry_data(agv, AGVTelemetryData)
-        time.sleep(5)
+    for agv_info in AGVdata:
+        agv_telemetry = agv_info['telemetry_data']
+        agv_telemetry.update_measurements()
+        publish_telemetry_data(agv_info, agv_telemetry)
+        time.sleep(2)
+
+
+# for message_id in range(message_limit):
+#     for agv in AGVdata:
+#         AGVTelemetryData.update_measurements()
+#         publish_telemetry_data(agv, AGVTelemetryData)
+#         time.sleep(5)
 
 
 #for agv in AGVdata:
