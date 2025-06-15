@@ -1,4 +1,1 @@
-- creare la classe httpconfigurationparameters nella cartella config ( in mqtt_vehicle data consumer alla righa 6 e 7 c'è roba da far sparire)
-- trovare un modo di cambiare le mission coordinates degli agv in modo che siano diverse (al momento, tutti gli altri parametri vengono generati diversamente tranne le mission coordinates per qualche ragione)
-
 

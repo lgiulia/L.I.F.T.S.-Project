@@ -27,12 +27,6 @@ for agv in AGVdata:
     dataManager.add_agv(demoAGV)
     telemetry_data_manager[agv["id"]] = None # Inizializza lo spazio per i dati di telemetria
 
-#demoAGV = AGVDescriptor("agv-0001", "KUKA", "alpha.01", "4.6.21")
-#
-#dataManager.add_agv(demoAGV)
-#codice originale, prende solo dei dati preimpostati, senza leggere InfoData.json
-
-
 
 api.add_resource(AGVsResource, ENDPOINT_PREFIX,    # aggiunge lista di agvs
                  resource_class_kwargs={'data_manager': dataManager},

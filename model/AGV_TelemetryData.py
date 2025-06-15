@@ -16,9 +16,6 @@ class AGVTelemetryData:
     def to_json(self):
         return json.dumps(self, default=lambda o: o.__dict__)
 
- #   random_x = 0 + random.uniform(0, 14)  # imponiamo una posizione causale della prima missione
- #   random_y = 0 + random.uniform(0, 16)
-
     def update_measurements(self): #per emulare la generazione di nuovi valori in modo random
 
         if self.BatteryLevel > 0 and self.ON_OFF == "ON":
@@ -39,13 +36,9 @@ class AGVTelemetryData:
             else:
                 self.ON_OFF = "OFF"
 
-       # self.MissionCoordinates = Coordinates(0 + random.uniform(0, 14), 0 + random.uniform(0, 16))
-
         #algoritmo spostamento agv
         random_x = random.randint(0, 14)
         random_y = random.randint(0, 16)
-
-
 
         if self.MissionStatus == "completed":
             self.MissionCoordinates = Coordinates(random_x, random_y)
@@ -56,7 +49,7 @@ class AGVTelemetryData:
                 if self.MissionCoordinates.x == self.Position.x :  #se le coordinate x combaciano (siamo sulla stessa colonna) basta modificare solo le y
                     self.MissionStatus = "ongoing"
                     if  self.Position.y < self.MissionCoordinates.y :
-                        self.Position.y += 1 #impostiamo la velocità ad 1 così non abbiamo problemi di overstepping dell'agv, nel caso poi cambieremo la velocità ed implementeremo un altra verifica di posizione ad ogni passo
+                        self.Position.y += 1 #impostiamo la velocità ad 1 così non abbiamo problemi di overstepping dell'agv
                     elif self.Position.y > self.MissionCoordinates.y :
                         self.Position.y -= 1
 
@@ -75,7 +68,6 @@ class AGVTelemetryData:
 
             elif self.MissionCoordinates.x == self.Position.x and self.MissionCoordinates.y == self.Position.y :
                 self.MissionStatus = "completed"
-                #self.MissionCoordinates = Coordinates(0 + int(random.uniform(0, 14)), 0 + int(random.uniform(0, 16)))
         else:
             self.MissionStatus = "paused"
 

@@ -9,5 +9,3 @@ class MqttConfigurationParameters(object):
     DEVICE_TOPIC = "device"
     DEVICE_TELEMETRY_TOPIC = "telemetry"
     DEVICE_INFO_TOPIC = "info"
-
-#dobbiamo capire cosa metterci dentro strada facendo -> Risolto?

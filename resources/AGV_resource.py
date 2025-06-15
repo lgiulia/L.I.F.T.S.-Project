@@ -1,4 +1,4 @@
-# accesso alla risorsa di un singolo AGV. Gestisce le rihcieste che arrivano sui path /AGV/<agv_id>
+# accesso alla risorsa di un singolo AGV. Gestisce le richieste che arrivano sui path /AGV/<agv_id>
 
 from json import JSONDecodeError
 from flask import request, Response

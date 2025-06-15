@@ -1,6 +1,4 @@
 import json
-#from wsgiref.simple_server import software_ver
-
 
 class AGVDescriptor:
 

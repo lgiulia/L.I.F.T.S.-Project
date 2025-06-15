@@ -28,7 +28,7 @@ def publish_telemetry_data(agv_data, telemetry_data):
         {"n": "timestamp", "v": telemetry_data.timestamp}
     ]
     device_payload_string = json.dumps(senml_payload)
-    mqtt_client.publish(target_topic, device_payload_string, 1, True) # mqtt_client.publish(target_topic, device_payload_string, QoS (1), il broker conserva il messaggio (False))
+    mqtt_client.publish(target_topic, device_payload_string, 1, True) # mqtt_client.publish(target_topic, device_payload_string, QoS (1), il broker conserva il messaggio (True))
     print(f"Telemetry data Published: Topic: {target_topic} Payload: {device_payload_string}")
 
 def publish_device_info(agv_data):
@@ -50,7 +50,6 @@ def publish_device_info(agv_data):
     mqtt_client.publish(target_topic, device_payload_string, 0, False) # False: non conserverà il messaggio
     print(f"Device Info Published: Topic: {target_topic} Payload: {device_payload_string}")
 
-# device_id = "AGV-device-{0}".format(MqttConfigurationParameters.MQTT_USERNAME) # non più necessario, si prende dai dati
 message_limit = 3000
 
 mqtt_client = mqtt.Client()
@@ -63,11 +62,8 @@ with open('../InfoData.json','r') as file:
     AGVdata = json.load(file)
 
 
-
 for agv in AGVdata:
     publish_device_info(agv)
-
-#AGVTelemetryData = AGVTelemetryData()
 
 for agv_info in AGVdata:
     agv_info['telemetry_data'] = AGVTelemetryData()
@@ -78,22 +74,5 @@ for message_id in range(message_limit):
         agv_telemetry.update_measurements()
         publish_telemetry_data(agv_info, agv_telemetry)
         time.sleep(2)
-
-
-# for message_id in range(message_limit):
-#     for agv in AGVdata:
-#         AGVTelemetryData.update_measurements()
-#         publish_telemetry_data(agv, AGVTelemetryData)
-#         time.sleep(5)
-
-
-#for agv in AGVdata:
-#    publish_device_info(agv)
-#    AGVTelemetryData = AGVTelemetryData()
-#    for message_id in range(message_limit):
-#        AGVTelemetryData.update_measurements()
-#        publish_telemetry_data(agv, AGVTelemetryData)
-#        time.sleep(3)
-
 
 mqtt_client.loop_stop()

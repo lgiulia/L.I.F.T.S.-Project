@@ -27,7 +27,7 @@ def on_connect(client, userdata, flags, rc):
     print("Subscribed to: " + device_telemetry_topic)
 
 def on_message(client, userdata, message):
-    print(f"Received IoT Message: Topic: {message.topic} Payload: {message.payload.decode()}") # f": f string. Incorpora espressioni python all'interno di stringhe usando {}
+    print(f"Received IoT Message: Topic: {message.topic} Payload: {message.payload.decode()}") 
     try:
         senml_data = json.loads(message.payload.decode('utf-8'))
         print("Parsed SenML data:", senml_data)
