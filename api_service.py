@@ -23,7 +23,7 @@ with open('InfoData.json','r') as file:
     AGVdata = json.load(file)
 
 for agv in AGVdata:
-    demoAGV = AGVDescriptor(agv["id"], agv["manufacturer"], agv["model"], agv["software_ver"])
+    demoAGV = AGVDescriptor(agv["id"], agv["manufacturer"], agv["model"], agv["software_ver"], agv["telemetry_data"])
     dataManager.add_agv(demoAGV)
     telemetry_data_manager[agv["id"]] = None # Inizializza lo spazio per i dati di telemetria
 

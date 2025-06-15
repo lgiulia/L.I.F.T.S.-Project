@@ -39,7 +39,7 @@ def publish_device_info(agv_data):
         agv_data["id"],
         MqttConfigurationParameters.DEVICE_INFO_TOPIC
     )
-    device_info = AGVDescriptor(agv_data["id"], agv_data["manufacturer"], agv_data["model"], agv_data["software_ver"])
+    device_info = AGVDescriptor(agv_data["id"], agv_data["manufacturer"], agv_data["model"], agv_data["software_ver"], agv_data["telemetry_data"])
     senml_device_info = [
         {"bn": f"{agv_data['id']}/"},
         {"n": "device/manufacturer", "vs": device_info.manufacturer},
